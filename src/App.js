@@ -1,10 +1,11 @@
 import React from 'react';
-import Todoform from './components/Todoform';
+// import Todoform from './components/Todoform';
+import Todolist from './components/Todolist';
 
 function App() {
   return (
     <div>
-      <Todoform />
+      <Todolist />
     </div>
   );
 }
