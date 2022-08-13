@@ -15,32 +15,40 @@ const addTodo = todo => {
     setTodos(newTodos);
 };
 
-    const removeTodo = id => {
-      const removearr = [...todos].filter(todo => todo.id !== id);
-      setTodos(removearr);
-    };
+const updateTodo = (todoId, newValue) => {
+  if (!newValue.text || /^\s*$/.test(newValue.text)) {
+    return;
+  }
 
-    const completeTodo = id => {
-        let updatedTodos = todos.map(todo => {
-          if(todo.id ) {
-            todo.isComplete = !todo.isComplete;
-          }
-      return todo;
-        });
-    setTodos(updatedTodos);
+  setTodos(prev => prev.map(item => (item.id === todoId ? newValue : item)));
 };
 
-    return (
-    <div>
-        <h1>What's the plan for today?</h1>
-        <Todoform onSubmit={addTodo}/>
-        <Todo 
-        todos={todos}
-        completeTodo={completeTodo}
-        removeTodo={removeTodo}
-        />
-    </div>
-  )
-}
+const removeTodo = id => {
+    const removearr = [...todos].filter(todo => todo.id !== id);
+      setTodos(removearr);
+};
+
+const completeTodo = id => {
+    let updatedTodos = todos.map(todo => {
+      if(todo.id ) {
+        todo.isComplete = !todo.isComplete;
+      }
+      return todo;
+    });
+  setTodos(updatedTodos);
+};
+
+  return (
+  <div>
+      <h1>What's the plan for today?</h1>
+      <Todoform onSubmit={addTodo}/>
+      <Todo 
+      todos={todos}
+      completeTodo={completeTodo}
+      removeTodo={removeTodo}
+      updateTodo={updateTodo}
+      />
+  </div>
+)};
 
 export default Todolist
