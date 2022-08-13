@@ -23,7 +23,7 @@ function Todo({ todos, completeTodo, removeTodo, updateTodo }) {
         return <Todoform edit={edit} onSubmit={submitUpdate} />;
       }
 
-    return todos.map((todo, index) =>(
+    return todos.map((todo, index) => (
 
         <div className={todo.isComplete ? 'todo-row complete' : 'todo-row'} key={index}>
 
