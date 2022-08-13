@@ -15,6 +15,11 @@ const addTodo = todo => {
     setTodos(newTodos);
 };
 
+    const removeTodo = id => {
+      const removearr = [...todos].filter(todo => todo.id !== id);
+      setTodos(removearr);
+    };
+
     const completeTodo = id => {
         let updatedTodos = todos.map(todo => {
           if(todo.id ) {
@@ -31,7 +36,9 @@ const addTodo = todo => {
         <Todoform onSubmit={addTodo}/>
         <Todo 
         todos={todos}
-        completeTodo={completeTodo} />
+        completeTodo={completeTodo}
+        removeTodo={removeTodo}
+        />
     </div>
   )
 }
